@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    .login-div{
+        @apply flex flex-col gap-2
+    }
+
+    .login-label{
+        @apply text-2xl text-prm
+    }
+
+    .btn-prm{
+        @apply bg-prm py-3 text-white font-bold text-lg rounded-md hover:opacity-70
+    }
+
+    .login-inp{
+        @apply h-12 text-lg outline-none border-b-[1px] border-b-prm
+    }
+}
