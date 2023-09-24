@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         prm: "#9083D5",
+        // prm:"#7C65F5",
         bgprm: "#C4C4C4",
       },
     },
