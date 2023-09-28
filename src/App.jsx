@@ -16,9 +16,10 @@ import { useSelector } from "react-redux"
 import ProtectDoctorLayout from "./protectedRoutes/ProtectDoctorLayout"
 import ProtectPatientLayout from "./protectedRoutes/ProtectPatientLayout"
 import Notfound from "./errors/Notfound"
+import UpcomingAppointments from "./components/General/UpcomingAppointments"
+import PastAppointments from "./components/General/PastAppointments"
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/login",
@@ -29,7 +30,7 @@ function App() {
       element: <Signup />,
     },
     {
-      errorElement:<Notfound/>,
+      errorElement: <Notfound />,
       path: "/",
       element: (
         <ProtectedRoutes>
@@ -60,6 +61,17 @@ function App() {
             {
               path: "appointments",
               element: <Appointments />,
+              children: [
+                {
+                  index:true,
+                  // path: "upcoming",
+                  element: <UpcomingAppointments />,
+                },
+                {
+                  path: "past",
+                  element: <PastAppointments />,
+                },
+              ],
             },
             {
               path: "alldoctors",
@@ -94,6 +106,17 @@ function App() {
             {
               path: "appointments",
               element: <Appointments />,
+              children: [
+                {
+                  index:true,
+                  // path: "upcoming",
+                  element: <UpcomingAppointments />,
+                },
+                {
+                  path: "past",
+                  element: <PastAppointments />,
+                },
+              ],
             },
             {
               path: "bookappointment/:docID",

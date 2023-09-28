@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-import AllPatients from "../../components/Doctors/AllPatients"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import { useGlobalContext } from "../../context/GlobalContextWrapper"
 
@@ -11,7 +10,7 @@ const DoctorLayout = () => {
     <div>
       <Sidebar />
       <div
-        className={`px-12 py-16 min-h-screen bg-[#F5F6FA] pb-16 ${
+        className={`px-12 py-16 min-h-screen mt-[73px] bg-[#F5F6FA] pb-16 ${
           isSideBarOpen ? "ml-64" : "ml-0"
         } transition-all duration-300`}
       >

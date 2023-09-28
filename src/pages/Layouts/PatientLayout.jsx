@@ -10,7 +10,7 @@ const PatientLayout = () => {
     <div>
       <Sidebar />
       <div
-        className={`px-12 py-16 min-h-screen bg-[#F5F6FA] ${
+        className={`px-12 py-16 min-h-screen mt-[73px] bg-[#F5F6FA] ${
           isSideBarOpen ? "ml-64" : "ml-0"
         } transition-all duration-300`}
       >

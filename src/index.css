@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base{
+
+    body{
+        @apply bg-[#F5F6FA]
+    }
     .login-div{
         @apply flex flex-col gap-1
     }

@@ -119,14 +119,14 @@ const UserDetails = () => {
         <button className="btn-sec" onClick={() => navigate(-1)}>
           Go Back
         </button>
-        {userRole === "patient" && (
+        {/* {userRole === "patient" && (
           <button
             onClick={() => navigate(`/patient/bookappointment/${id}`)}
             className="btn-prm px-4"
           >
             Book Appointment
           </button>
-        )}
+        )} */}
       </div>
     </div>
   )

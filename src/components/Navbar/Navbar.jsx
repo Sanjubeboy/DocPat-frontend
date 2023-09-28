@@ -13,6 +13,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userName = useSelector(state => state.auth.user)
+  const role = useSelector(state => state.auth.role)
   // const isAuth = useSelector(state => state.auth.isAuthenticated)
   // console.log(isAuth)
 
@@ -23,7 +24,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`px-4 flex justify-between items-center border-b-[1px] z-30 sticky top-0 right-0 left-0 bg-white`}
+      className={`px-4 flex justify-between items-center border-b-[1px] z-30 fixed top-0 right-0 left-0 bg-white`}
     >
       <div className="flex items-center gap-2">
         {isSideBarOpen ? (
@@ -40,7 +41,7 @@ const Navbar = () => {
           />
         )}
 
-        <img src={logo} className="h-20 w-60 -mt-2 cursor-pointer" />
+        <img src={logo} onClick={() => navigate(`/${role}/dashboard`)} className="h-20 w-60 -mt-2 cursor-pointer" />
       </div>
 
       <ul className="flex items-center gap-8">

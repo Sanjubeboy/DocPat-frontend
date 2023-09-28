@@ -1,23 +1,32 @@
 import axios from "axios"
 
-export const getAppointments = ({ role, authToken }) => {
+export const getAppointments = ({ role, authToken, sort }) => {
+
+  const sortOption = sort==='Ascending'? 'a' : 'd'
 
   if (role === "patient") {
     return axios.post(
-      `${import.meta.env.VITE_BASE_URL}/${role}/getPatientAppointments`,
+      `${import.meta.env.VITE_BASE_URL}/${role}/getPatientAppointments?sort=${sortOption}`,
       {},
       {
         headers: { Authorization: `Bearer ${authToken}` },
       }
     )
   } else {
-    return axios.get(`${import.meta.env.VITE_BASE_URL}/${role}/patients`, {
-      headers: { Authorization: `Bearer ${authToken}` },
-    })
+    return axios.get(
+      `${import.meta.env.VITE_BASE_URL}/${role}/patients?sort=${sortOption}`,
+      {
+        headers: { Authorization: `Bearer ${authToken}` },
+      }
+    )
   }
 }
 
-export const getDoctors = ({ body, authToken }) => {
+export const getDoctors = ({ body, authToken, special }) => {
+
+  if(special !== '' && body.filter){
+    body.filter.specialization = special
+  }
   return axios.post(
     `${import.meta.env.VITE_BASE_URL}/patient/getDoctors`,
     body,
@@ -68,7 +77,7 @@ export const getDoctorAppointments = async ({ queryKey }) => {
     }
   )
   // console.log(res2)
-  const newFormProps = res2.data.map((item) => new Date(item.time).toString())
+  const newFormProps = res2.data.futureAppointments.map((item) => new Date(item.time).toString())
   return newFormProps
 }
 
@@ -79,6 +88,16 @@ export const submitAppointment = ({ apiBody, authToken }) => {
     apiBody,
     {
       headers: { Authorization: `Bearer ${authToken}` },
+    }
+  )
+}
+
+export const deleteAppointment = ({apiBody, role, authToken}) => {
+  return axios.delete(
+    `${import.meta.env.VITE_BASE_URL}/${role}/deleteAppointment/${apiBody.appointmentId}`,
+    {
+      headers: { Authorization: `Bearer ${authToken}` },
+      
     }
   )
 }
